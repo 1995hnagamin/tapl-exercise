@@ -1,0 +1,36 @@
+\documentclass[uplatex,dvipdfmx,ja=standard]{bxjsarticle}
+\begin{document}
+
+\newcommand{\typing}[3]{#1 $\vdash$ #2{\tt:}#3}
+
+\newcommand{\varx}{{\tt x}}
+\newcommand{\typet}{{\tt T}}
+\newcommand{\typeu}{{\tt U}}
+\newcommand{\tybool}{{\tt U}}
+\newcommand{\tynat}{{\tt Nat}}
+\newcommand{\ctxtg}{{$\Gamma$}}
+\newcommand{\funarrow}{{$\rightarrow$}}
+
+存在しない。
+
+型の深さを次で定義する。
+\begin{itemize}
+\item \tybool の深さは0である。
+\item \tynat の深さは0である。
+\item \typet \funarrow \typeu の深さは
+		\typet の深さと \typeu の深さの大きい方(小さくない方)に1を加えた値である。
+\end{itemize}
+
+定義より型の深さは一意である。
+
+いま、ある文脈\ctxtg 、 変数\varx 、 型\typet について \typing{\ctxtg}{\varx \varx}{\typet} であるとする。
+補題9.3.1よりある型\typeu が存在して
+\typing{\ctxtg}{\varx}{\typeu \funarrow \typet}および
+\typing{\ctxtg}{\varx}{\typeu}
+が成り立つ。
+\varx は変数であるので、
+\ctxtg(\varx) = \typeu = \typeu \funarrow \typet
+であるが、
+\typeu \funarrow \typet の深さは \typeu の深さより常に大きい。これは型の深さが一意であることに反する。
+
+\end{document}
